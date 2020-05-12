@@ -59,7 +59,7 @@ INSERT INTO produto VALUES
 (4,'Video-Game',1500),
 (5,'Copos',45),
 (6,'Computador',3000),
-(7,'Televis„o',2500),
+(7,'Televis√£o',2500),
 (8,'Machado',300),
 (9,'Anel com Diamente',10000)
 
