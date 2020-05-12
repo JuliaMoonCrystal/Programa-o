@@ -1,0 +1,120 @@
+Create DATABASE avaliacao1
+GO
+USE avaliacao1
+
+CREATE TABLE cliente(
+codigo int NOT NULL Primary key,
+nome VARCHAR(100) NOT NULL,
+telefone CHAR(13) NOT NULL
+)
+
+CREATE TABLE produto(
+codigo int NOT NULL Primary key,
+nome VARCHAR(100) NOT NULL,
+valor_Unitario DECIMAL(7,2) NOT NULL
+)
+
+CREATE TABLE venda(
+cod_cli int NOT NULL,
+cod_produto int NOT NULL,
+data_hora Date  NOT NULL,
+quantidade int not null,
+valor_uni DECIMAL(7,2) NOT NULL,
+valor_total DECIMAL(7,2) NOT NULL
+Primary key (cod_cli,cod_produto,data_hora),
+Foreign key (cod_cli) references cliente (codigo),
+Foreign key (cod_produto) references produto (codigo)
+)
+
+
+CREATE TABLE bonus(
+id int Primary key not null,
+valor int NOT NULL,
+premio CHAR(200) NOT NULL
+)
+
+INSERT INTO bonus VALUES
+(1,1000,'Jogo de copos'),
+(2,2000,'Jogo de pratos'),
+(3,3000,'Jogo de talheres'),
+(4,4000,'Jogo de porcelana'),
+(5,5000,'Jogos de cristais')
+
+INSERT INTO cliente VALUES
+(1,'Tempesta',1111111111111),
+(2,'Gamamori',2222222222222),
+(3,'Ryuko',2873645109474),
+(4,'Naruto',2873651947635),
+(5,'Marinnete',3910936528176),
+(6,'Adrien',013652867587),
+(7,'Gabriel',1093532869265),
+(8,'Allya',5555555555555),
+(9,'Rafael',8729467398175),
+(10,'Nino',3095986462431)
+
+INSERT INTO produto VALUES
+(1,'Cajado do alvorecer',15.7),
+(2,'Manto da neve',30.0),
+(3,'Talheres',25.5),
+(4,'Video-Game',1500),
+(5,'Copos',45),
+(6,'Computador',3000),
+(7,'Televisão',2500),
+(8,'Machado',300),
+(9,'Anel com Diamente',10000)
+
+SELECT*FROM cliente
+SELECT*FROM produto
+SELECT*FROM bonus
+
+CREATE PROCEDURE sp_vendas (@cod_cliente INT,@cod_produto INT,@quantidade INT)
+AS
+  BEGIN
+    DECLARE @valor_unit DECIMAL(7,2)
+	DECLARE @valor_total DECIMAL(7,2)
+    SET @valor_unit=(Select valor_Unitario FROM produto WHERE codigo=@cod_produto)
+	SET @valor_total=@valor_unit*@quantidade
+	INSERT INTO venda VALUES(@cod_cliente,@cod_produto,GETDATE(),@quantidade,@valor_unit,@valor_total)
+   END
+
+EXEC sp_vendas 1,2,100
+EXEC sp_vendas 2,3,2
+EXEC sp_vendas 3,1,40
+EXEC sp_vendas 5,8,40
+Exec sp_vendas 10,8,1
+Exec sp_vendas 6,3,19
+Exec sp_vendas 7,6,21
+Exec sp_vendas 4,7,10
+
+
+
+SELECT*FROM venda
+
+CREATE FUNCTION fn_bonificacao()
+RETURNS @tabela_bonus TABLE(
+cod_cliente INT ,
+nome VARCHAR(100),
+total_gasto DECIMAL(11,2),
+bonus_compra INT,
+Grande_premio VARCHAR(200),
+resto_bonus INT
+)
+AS
+ BEGIN
+   INSERT @tabela_bonus(cod_cliente,nome) SELECT codigo,nome FROM cliente
+    UPDATE @tabela_bonus SET total_gasto = (SELECT SUM(venda.quantidade*venda.valor_uni) FROM venda WHERE cod_cliente=venda.cod_cli)
+	UPDATE @tabela_bonus SET bonus_compra = total_gasto
+	UPDATE @tabela_bonus SET Grande_premio ='JOGO DE COPOS' WHERE bonus_compra >=1000 AND bonus_compra < 2000
+	UPDATE @tabela_bonus SET Grande_premio ='JOGO DE PRATOS' WHERE bonus_compra >=2000 AND bonus_compra < 3000
+	UPDATE @tabela_bonus SET Grande_premio ='JOGO DE TALHERES' WHERE bonus_compra >=3000 AND bonus_compra < 4000
+	UPDATE @tabela_bonus SET Grande_premio ='JOGO DE PORCELANA' WHERE bonus_compra >=4000 AND bonus_compra < 5000
+	UPDATE @tabela_bonus SET Grande_premio ='JOGOS DE CRISTAIS' WHERE bonus_compra >=5000 
+	UPDATE @tabela_bonus SET resto_bonus = (bonus_compra -CAST((SELECT valor FROM bonus WHERE bonus.premio=Grande_premio) AS INT))
+	
+	RETURN
+END
+
+SELECT*FROM dbo.fn_bonificacao()
+
+
+DROP FUNCTION fn_bonificacao
