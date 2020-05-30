@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercicio 2</title>
+    </head>
+    <body>
+        <div class="app">
+            <input type="text" name="nome">
+            <button onClick="adicionar()">Adicionar</button>
+        </div>
+    </body>
+    <script>
+       var nomes =['Lucas','Pedro','Raj'];
+        var listaElement = document.querySelector('ul');
+        var inputElement = document.querySelector('input');
+  
+    for(nome of nomes){
+      var liElment = document.createElement('li');
+      var textElement = document.createTextNode(nome);
+      liElment.appendChild(textElement);
+      listaElement.appendChild(liElment); 
+    }
+    function addItem(texto){
+    var liElment = document.createElement('li');
+    var textElement = document.createTextNode(texto);
+    
+    liElment.appendChild(textElement);
+    listaElement.appendChild(liElment);
+}
+
+function adicionar(){
+    addItem(inputElement.value);
+    inputElement.value = ""; // limpa o campo imput
+}
+
+for(nome of nomes){
+    addItem(nome);
+}
+    </script>
+</html>

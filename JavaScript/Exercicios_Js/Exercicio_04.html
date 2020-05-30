@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="ITF-8">
+        <title>Exercicio 04</title>
+        <h3> Vamos saber a sua experiencia na programação</h3>
+    </head>
+    <body>
+        <script>
+              function experiencia(anosEstudos){
+                if(anosEstudos == 0 || anosEstudos == 1 ){
+                    return 'Iniciante';
+                } else if(anosEstudos > 1 && anosEstudos <=3){
+                    return 'Intermediario';
+                }else if(anosEstudos >3 && anosEstudos <=6 ){
+                    return 'Avançado';
+                }
+                else{
+                    return 'Mestre Jedi';
+                } 
+              }
+
+              var anosEstudos=experiencia(6);
+              console.log(anosEstudos);
+
+            
+
+
+        </script>
+    </body>
+</html>

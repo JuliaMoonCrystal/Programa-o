@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Trabalhando com DOM</title>
+        <h3>Vamos começar a trabalhar com eventos e aprender a fazer referencias</h3>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" name="nome" id="nome"/>
+            <p><input type="text" name="nome2" id="nome2"/></p>
+            <p><input  class="nome3"></p>
+            <p><input type="text"name="nome4" /></p>
+            <button class="Botão">adicionar</button>
+        </div>
+    </body>
+    <script>
+        // Uma forma de se fazer referencia há um elemento da DOM//
+      var inputElement=document.getElementById('nome');
+      //--------------------------------------------------------//
+
+      //Outra forma de se referenciar um elemento,mas esse vai mostrar em um vetor todas as ocorrencias com esse nome ou tag//
+      var elemento=document.getElementsByTagName('input');
+     //------------------------------------------------------//
+
+     //refrencia por classe,mas com o mesmo principio da variavel anterior//
+     var elementos=document.getElementsByClassName('nome3');
+     //-------------------//
+
+     //"usando isso podemos descartar as outras formas de rferencia já que ele nos dixa percorer//
+     // a DOM até achar o elemento que estamos procurando"//
+     var query=document.querySelector('body div#app input');// ou('input[name=nome4]')
+
+     //--------------------------//
+    var btn=document.querySelector('button.botão');
+
+      console.log(inputElement);
+      console.log(elemento);
+      console.log(elementos);
+      console.log(query);
+
+     btn.onclick= function(){
+         var text=query.value;
+         alert(text);
+        
+     }
+
+    </script>
+</html>

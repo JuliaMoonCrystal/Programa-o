@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vamos lidar com os elemntos -w-</title>
+        <h3>Agora maos lidar com os elementos</h3>
+    </head>
+    <body>
+        <div id="ap">
+         <input id="nome"/>
+        </div>
+    </body>
+     <script>
+// criando elementos para colocar links//
+          var elemento= document.createElement('a');
+          elemento.setAttribute('href', 'https://github.com/RajGod');
+          elemento.setAttribute('title', 'Github do Raj');
+      
+          var text =document.createTextNode('Acessar Git do Raj -v-');
+          elemento.appendChild(text);
+
+          var content=document.querySelector('#ap');
+          content.appendChild(elemento);
+
+          var inputElement =document.querySelector('#nome');
+          content.removeChild(inputElement);
+
+     </script>
+</html>

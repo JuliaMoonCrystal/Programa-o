@@ -1,0 +1,21 @@
+<html>
+ <head>
+     <meta charset="UTF-8">
+     <title>Exercicio 03</title>
+     <h2>Vamos lá</h2>
+ </head>
+ <body>
+   <ul></ul>
+ </body>
+<script>
+  var nomes =['Lucas','Pedro','Raj'];
+  var listaElement = document.querySelector('ul');
+  
+for(nome of nomes){
+    var liElment = document.createElement('li');
+    var textElement = document.createTextNode(nome);
+    liElment.appendChild(textElement);
+    listaElement.appendChild(liElment);
+}
+</script>
+</html>

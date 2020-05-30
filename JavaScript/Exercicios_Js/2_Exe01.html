@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercicio 1</title>
+        <h2>Crie um botão que ao ser clicado cria um novo elemento em tela com a forma de um quadrado
+            vermelho com 100px de altura e largura. Sempre que o botão for clicado um novo quadrado deve
+            aparecer na tela. </h2>
+    </head>
+    <body>
+        <div id="app">
+          <button class="btn">Clique aqui</button>
+        </div>
+    </body>
+    <script>    
+  var bt=document.querySelector('button.btn');
+  var squareElement=document.getElementById('app');
+
+  bt.onclick= function(){
+  //  alert('foi clicado');//
+  var square = document.createElement('div');
+  var boxElement=document.querySelector('.box');
+  boxElement.style.width= 100;
+  boxElement.style.height=100;
+  boxElement.style.backgroundColor='#f00';
+   
+  squareElement.appendChild(square);
+  }
+
+    </script>
+</html>
