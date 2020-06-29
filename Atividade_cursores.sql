@@ -115,9 +115,8 @@ BEGIN
 			@NM_UF varchar(2)
 
 	DECLARE cursor_enviar CURSOR FOR
-
-		SELECT CPF,NR_LINHA_ARQUIV,CD_FILIAL,DT_ENVIO,NR_DDD,NR_TELEFONE,@NR_RAMAL,@DT_PROCESSAMENT FROM envio
-	OPEN cursor_envio
+    SELECT CPF,NR_LINHA_ARQUIV,CD_FILIAL,DT_ENVIO,NR_DDD,NR_TELEFONE,@NR_RAMAL,@DT_PROCESSAMENT FROM envio
+	OPEN cursor_enviar
 	DECLARE cursor_endereco CURSOR FOR
 		SELECT CPF,CEP,ENDEREÇO,PORTA, COMPLEMENTO,BAIRRO,CIDADE,UF FROM endereço
 	OPEN cursor_endereco
@@ -142,7 +141,7 @@ BEGIN
 	
 	END
 	CLOSE cursor_enviar
-    DEALLOCATE cursor_envio
+    DEALLOCATE cursor_enviar
 
 	CLOSE cursor_endereco
     DEALLOCATE cursor_endereco
