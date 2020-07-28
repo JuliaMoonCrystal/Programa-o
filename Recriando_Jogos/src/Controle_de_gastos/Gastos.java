@@ -6,6 +6,7 @@ public class Gastos {
  private double conta_gas;
  private double outros_gastos;
  
+
 public double getConta_luz() {
 	return conta_luz;
 }
