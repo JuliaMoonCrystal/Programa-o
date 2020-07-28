@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 
 public class TesteImagem extends JFrame {
 
-	ImageIcon imagem =new ImageIcon(getClass().getResource("leon.jpg"));
+	ImageIcon imagem =new ImageIcon(getClass().getResource("sun.jpg"));
 	JLabel label=new JLabel(imagem);
 	
 	
