@@ -12,13 +12,13 @@ public class Control_Gastos {
 		return lista;
 	}
 	
-//	public void lancar_Gastos() {
-//		GastosDaoImp nDAO;
-//		try {
-//			nDAO = new GastosDaoImp();
-//			nDAO.inserirGastos(this.getLista());;
-//		} catch (ClassNotFoundException | SQLException | DAOException e) {
-//			e.printStackTrace();		
-//		}
-//	}
+	public void lancar_Gastos() throws SQLException {
+		GastosDaoImp nDAO;
+		try {
+			nDAO = new GastosDaoImp();
+			nDAO.inserirGastos(this.getLista());;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();		
+		}
+	}
 }

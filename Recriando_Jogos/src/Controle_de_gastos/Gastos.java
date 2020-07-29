@@ -9,6 +9,13 @@ public class Gastos {
  private double outros_gastos;
  private Date dia;
  
+ public Gastos(double conta_luz,double conta_agua,double conta_gas,double outros_gastos,Date dia) {
+	 this.conta_luz=conta_luz;
+	 this.conta_agua=conta_agua;
+	 this.conta_gas=conta_gas;
+	 this.outros_gastos=outros_gastos;
+	 this.dia=dia;
+ }
 
 public double getConta_luz() {
 	return conta_luz;

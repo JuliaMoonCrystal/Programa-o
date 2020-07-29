@@ -1,5 +1,9 @@
 package Controle_de_gastos;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -17,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -26,7 +31,7 @@ import javafx.util.Callback;
 public class lancar_gastos implements BoundaryContent, EventHandler<ActionEvent> {
 
 	public  Control_Gastos controlNotas = new Control_Gastos();
-	
+	public  Gastos gast =new Gastos(0, 0, 0, 0, null);
 	
 	private ComboBox<Users> comboUsers = new ComboBox<>();
 	
@@ -45,16 +50,16 @@ public class lancar_gastos implements BoundaryContent, EventHandler<ActionEvent>
 	private Label lblData = new Label("Data : ");
 	
 	TextField txtDia= new TextField();
+	private SimpleDateFormat sdt= new SimpleDateFormat("dd/mm/yy");
 	
-	private Button btnLancar_Gastos = new Button("Lancar os Gastos");
+	
+	private Button btnLancar_Gastos = new Button("Adicionar");
 	
 	private GridPane panGrid;
 	private BorderPane Principal;
 
-	private ObservableList<String> Mes = FXCollections.observableArrayList();
-	private TableView table = new TableView();
+	private TableView tabela = new TableView();
 
-	private Object Control_Gastos;
 
 	public lancar_gastos() {
 		Principal = new BorderPane();
@@ -91,7 +96,30 @@ public class lancar_gastos implements BoundaryContent, EventHandler<ActionEvent>
 
 
 		Principal.setCenter(panGrid);
-		Principal.setBottom(table);
+		Principal.setBottom(tabela);
+		addTableColluns();
+		 	
+	}
+	
+	//aqui estamos adicionando as colunas na tabela//
+	public void addTableColluns() {
+		TableColumn<Gastos,String> columLuz= new TableColumn("Luz");
+		columLuz.setCellValueFactory(new PropertyValueFactory<Gastos,String>("Luz"));
+		
+		TableColumn<Gastos,String> columAgua= new TableColumn("Água");
+		columLuz.setCellValueFactory(new PropertyValueFactory<Gastos,String>("Água"));
+		
+		TableColumn<Gastos,String> columGas= new TableColumn("Gás");
+		columLuz.setCellValueFactory(new PropertyValueFactory<Gastos,String>("Gás"));
+		
+		TableColumn<Gastos,String> columOutros= new TableColumn("Outras despesas");
+		columLuz.setCellValueFactory(new PropertyValueFactory<Gastos,String>("Outras despesas"));
+		
+		TableColumn<Gastos,Date> columData= new TableColumn("Data");
+		columLuz.setCellValueFactory(new PropertyValueFactory<Gastos,String>("Data"));
+	  
+		tabela.getColumns().addAll(columLuz,columAgua,columGas,columOutros,columData);
+		
 	}
 
 	public Pane generateForm() {
