@@ -4,10 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -26,11 +30,13 @@ public class Principal extends Application implements EventHandler<ActionEvent>{
 	
 	private BorderPane panPrincipal = new BorderPane();
 	
+	
 	private Map<MenuItem, BoundaryContent> telas = new HashMap<>();
 	
 	@Override
 	public void start(Stage stage) throws Exception {
 		panPrincipal.setTop(barraMenu);
+		
 		generateMenus();
 		Scene scn = new Scene(panPrincipal, 800, 600);
 		
@@ -62,7 +68,7 @@ public class Principal extends Application implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event) {
 				BoundaryContent tela = telas.get(event.getTarget());
 				if (tela != null) { 
-					panPrincipal.setCenter(tela.generateForm());				
+					panPrincipal.setCenter(tela.generateForm());
 				}			
 		}
 		public static void main(String[] args) {
