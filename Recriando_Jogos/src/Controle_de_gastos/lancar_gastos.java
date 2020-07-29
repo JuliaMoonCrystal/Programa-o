@@ -29,7 +29,6 @@ public class lancar_gastos implements BoundaryContent, EventHandler<ActionEvent>
 	
 	
 	private ComboBox<Users> comboUsers = new ComboBox<>();
-	private ComboBox<String> comboMes = new ComboBox<>();
 	
 	private Label lblLuz = new Label("Conta de luz : ");
 	private Label lblAgua = new Label("Conta de Água : ");
@@ -43,7 +42,9 @@ public class lancar_gastos implements BoundaryContent, EventHandler<ActionEvent>
 	
 	
 	private Label lblUsers = new Label("Usuario : ");
-	private Label lblAv = new Label("Mês : ");
+	private Label lblData = new Label("Data : ");
+	
+	TextField txtDia= new TextField();
 	
 	private Button btnLancar_Gastos = new Button("Lancar os Gastos");
 	
@@ -80,22 +81,17 @@ public class lancar_gastos implements BoundaryContent, EventHandler<ActionEvent>
 		panGrid.add(comboUsers, 3, 0);
 
 		
-		panGrid.add(lblAv, 4, 0);
-		panGrid.add(comboMes, 5, 0);
+		panGrid.add(lblData, 4, 0);
+		panGrid.add(txtDia, 5, 0);
 
 		panGrid.add(btnLancar_Gastos, 5, 1);
 
 		panGrid.setHgap(10);
 		panGrid.setVgap(10);
 
-		getMes();
-		//comboGastos.setItems(Mes);
 
 		Principal.setCenter(panGrid);
 		Principal.setBottom(table);
-	}
-	private void getMes() {
-		Mes.addAll("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
 	}
 
 	public Pane generateForm() {
@@ -105,7 +101,7 @@ public class lancar_gastos implements BoundaryContent, EventHandler<ActionEvent>
 	@Override
 	public void handle(ActionEvent event) {
 		if (event.getTarget() == btnLancar_Gastos) {
-			//this.Control_Gastos.lancar_gastos();
+			//this.Control_Gastos.lancar_Gastos();
 			JOptionPane.showMessageDialog(null, "Gastos inseridas com Sucesso");
 		}
 		

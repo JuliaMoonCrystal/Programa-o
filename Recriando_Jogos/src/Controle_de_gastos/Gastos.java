@@ -1,10 +1,13 @@
 package Controle_de_gastos;
 
+import java.sql.Date;
+
 public class Gastos {
  private double conta_luz;
  private double conta_agua;
  private double conta_gas;
  private double outros_gastos;
+ private Date dia;
  
 
 public double getConta_luz() {
@@ -30,6 +33,12 @@ public double getOutros_gastos() {
 }
 public void setOutros_gastos(double outros_gastos) {
 	this.outros_gastos = outros_gastos;
+}
+public Date getDia() {
+	return dia;
+}
+public void setDia(Date dia) {
+	this.dia = dia;
 }
  
 }

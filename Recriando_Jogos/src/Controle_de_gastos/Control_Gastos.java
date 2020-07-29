@@ -12,22 +12,7 @@ public class Control_Gastos {
 		return lista;
 	}
 	
-//	public List<Gastos> updateGastosList(Disciplina disc,Avaliacao av) {
-//		GastosDaoImp nDAO;
-//		try {
-//			nDAO = new GastosDaoImp();
-//			lista.clear();
-//		List<Gastos> listaGastos = nDAO.pesquisarPorDiscEAv(disc, av);
-//		for (Gastos t : listaGastos) {
-//				lista.add(t);
-//			}
-//		} catch (ClassNotFoundException | SQLException | DAOException e) {
-//			e.printStackTrace();		
-//		}
-//		return lista;
-//	}
-//	
-//	public void lancarNotas() {
+//	public void lancar_Gastos() {
 //		GastosDaoImp nDAO;
 //		try {
 //			nDAO = new GastosDaoImp();
