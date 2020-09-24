@@ -4,10 +4,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Tela_Principal {
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.stage.Stage;
+
+public class Tela_Principal  {
 	public static void main(String [] args) {
 		JFrame janela= new JFrame(); //Criamos a instancia do jframe;
 		
+		//Criamos os botões
 		JButton adicionar= new JButton("Adicionar novo contato");
 		JButton excluir= new JButton("Excluir contato");
 		JButton Pesquisar= new JButton("Pesquisar contato");
@@ -31,4 +37,6 @@ public class Tela_Principal {
 		janela.setVisible(true);
 	
 	}
+
+	
 }
