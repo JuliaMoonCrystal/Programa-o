@@ -1,14 +1,9 @@
-h1{
-    text-align: center;
-    color: blue;
-}
-
 body{
-    background-color: beige;
+    background-color:gainsboro;
 }
 
 img{
-  height: 250px;
+    height: 250px;
   width: 250px;
   border-radius: 10px;
   margin: 10px;

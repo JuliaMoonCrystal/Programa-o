@@ -1,0 +1,28 @@
+
+h1{
+    font-size: 5;
+    font-family:  Tahoma;
+    color: blue;
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}
+
+body{
+    background-color: gray;
+}
+
+p{
+    text-align: center;
+}
+
+img{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 10px;
+    align-content: center;
+    float:center;
+}
