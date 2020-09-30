@@ -1,0 +1,21 @@
+h1{
+    text-align: center;
+}
+
+p{
+    text-align: justify;
+    text-align: center;
+}
+
+a{
+    text-align: center;
+}
+
+img{
+    float: right;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 10px;
+    align-content: center;
+}
